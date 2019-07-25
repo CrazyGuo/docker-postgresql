@@ -1,21 +1,13 @@
-PostgreSQL:
-  restart: always
-  image: sameersbn/postgresql:10-2
-  ports:
-    - "5432:5432"
-  environment:
-    - DEBUG=false
-
-    - DB_USER=
-    - DB_PASS=
-    - DB_NAME=
-    - DB_TEMPLATE=
-
-    - DB_EXTENSION=
-
-    - REPLICATION_MODE=
-    - REPLICATION_USER=
-    - REPLICATION_PASS=
-    - REPLICATION_SSLMODE=
-  volumes:
-    - /srv/docker/postgresql:/var/lib/postgresql
+on: '2'
+services:
+  pg_server:
+    image: sameersbn/postgresql:10-2
+    restart: always
+    ports:
+      - 54321:5432
+    volumes:
+      - ./database:/var/lib/postgresql
+    enviroment:
+      - DEBUG=false
+      - DB_USER= odoo     #the user can login in the server
+      - DB_PASS= test@123
